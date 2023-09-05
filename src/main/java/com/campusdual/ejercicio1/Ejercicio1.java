@@ -1,4 +1,4 @@
-package com.campusdual.ercicio1;
+package com.campusdual.ejercicio1;
 
 public class Ejercicio1 {
     public static void main(String[] args) {

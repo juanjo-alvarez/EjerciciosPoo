@@ -1,4 +1,4 @@
-package com.campusdual.ercicio2;
+package com.campusdual.ejercicio2;
 
 import java.util.Scanner;
 
