@@ -7,6 +7,14 @@ public class probarVehiculos {
         panda.getDetails();
         Deportivo porche = new Deportivo(500,100,"Porche","Gasolina","rojo",1000);
         porche.getDetails();
+
+        Maquina maquina = panda;
+        System.out.println("Se mueve "+ maquina.calcularMovimiento(100));
+
+        maquina = porche;
+        System.out.println("Se mueve "+ maquina.calcularMovimiento(100));
+
+
     }
 
 }

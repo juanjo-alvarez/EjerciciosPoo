@@ -1,6 +1,6 @@
 package com.campusdual.ejemplos.vehiculos;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Maquina {
     private Integer pasajeros;
     private Integer velocidadMax;
     private Integer potencia;
