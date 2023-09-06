@@ -11,6 +11,12 @@ public class Food {
         this.proteins=0;
     }
 
+    public Food(Integer carbos,Integer fats, Integer proteins){
+        this.carbos=carbos;
+        this.fats=fats;
+        this.proteins=proteins;
+    }
+
     public Integer getCalories(Integer weight){
         //1 gramo de proteína nos da 4 calorías.
         // 1 gramo de carbohidratos nos da 4 calorías.
