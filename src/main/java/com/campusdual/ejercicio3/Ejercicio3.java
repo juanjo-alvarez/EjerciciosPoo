@@ -19,7 +19,7 @@ public class Ejercicio3 {
                 System.out.println("El número es primo");
                break;
             default:
-                System.out.println("El número es primo");
+                System.out.println("El número no es primo");
                 break;
         }
     }
