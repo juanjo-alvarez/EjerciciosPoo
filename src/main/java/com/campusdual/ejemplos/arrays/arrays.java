@@ -1,6 +1,8 @@
 package com.campusdual.ejemplos.arrays;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class arrays {
     public static void main(String[] args) {
@@ -33,6 +35,16 @@ public class arrays {
 
         String frase = "Tres tristes tigres tomaban trigo en un trigal";
         String[] fraseSplit = frase.split(" ");
+
+
+        Set<Integer> colecion = new HashSet<>();
+        colecion.add(1);
+        colecion.add(2);
+        colecion.add(1);
+
+        for(Integer elemento:colecion){
+            System.out.println("valor:"+elemento);
+        }
 
     }
 }
