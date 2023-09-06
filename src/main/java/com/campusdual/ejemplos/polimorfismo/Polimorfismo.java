@@ -1,8 +1,13 @@
-package com.campusdual.ejemplos;
+package com.campusdual.ejemplos.polimorfismo;
 
 public class Polimorfismo {
-    private Integer numero;
-    private String valor;
+    public Integer numero;
+    public String valor;
+
+    public Polimorfismo(){
+        this.numero=0;
+        this.valor="vacio";
+    }
 
     public Polimorfismo(Integer numero){
         this.numero=numero;
@@ -26,5 +31,9 @@ public class Polimorfismo {
 
     public void printValues(){
         System.out.println(this.valor + ":"+this.numero);
+    }
+
+    public class PolimorfismoSub{
+
     }
 }
