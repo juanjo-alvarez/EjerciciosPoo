@@ -1,17 +1,20 @@
 package com.campusdual.ejemplos.alimentos;
 
 public class Food {
+    private String name;
     private Integer carbos;
     private Integer fats;
     private Integer proteins;
 
-    public Food(){
+    public Food(String name){
         this.carbos=0;
         this.fats=0;
         this.proteins=0;
+        this.name=name;
     }
 
-    public Food(Integer carbos,Integer fats, Integer proteins){
+    public Food(String name, Integer carbos, Integer fats, Integer proteins){
+        this.name=name;
         this.carbos=carbos;
         this.fats=fats;
         this.proteins=proteins;
@@ -45,5 +48,13 @@ public class Food {
 
     public void setProteins(Integer proteins) {
         this.proteins = proteins;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
