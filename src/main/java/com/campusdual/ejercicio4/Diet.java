@@ -62,6 +62,7 @@ public class Diet {
         }else{
             maxCalories = (int) ((10*weight) + (6.25*height))-(5*age)+5;
         }
+        this.intakes = new ArrayList<>();
     }
 
     public void addFood(Food food, Integer grams) throws MaxValuedReachedException {
