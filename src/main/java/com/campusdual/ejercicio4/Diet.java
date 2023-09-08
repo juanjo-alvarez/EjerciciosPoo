@@ -3,6 +3,7 @@ package com.campusdual.ejercicio4;
 import com.campusdual.ejemplos.alimentos.Food;
 import com.campusdual.ejercicio4.exceptions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -27,7 +28,6 @@ La clase dieta tiene que tener las siguientes funcionalidades:
 *
 * */
 public class Diet {
-    public static final Integer GRAMS_PER_PORTION = 100;
     public static final String OK = "OK";
     public static final String MAX_CALORIES_REBASE = "MAX_CALORIES_REBASE";
     public static final String MAX_CARBS_REBASE = "MAX_CARBS_REBASE";
@@ -35,23 +35,25 @@ public class Diet {
     public static final String MAX_PROTEINS_REBASE = "MAX_PROTEINS_REBASE";
 
     private Integer maxCalories;
-
     private Integer maxCarbs;
     private Integer maxFats;
     private Integer maxProteins;
     private List<Intake> intakes;
 
     public Diet(){
+        this.intakes = new ArrayList<>();
     }
 
     public Diet(Integer maxCalories){
         this.maxCalories=maxCalories;
+        this.intakes = new ArrayList<>();
     }
 
     public Diet(Integer maxFats, Integer maxCarbs, Integer maxProteins){
         this.maxCarbs=maxCarbs;
         this.maxFats=maxFats;
         this.maxProteins=maxProteins;
+        this.intakes = new ArrayList<>();
     }
 
     public Diet(Boolean women, Integer age, Integer height, Integer weight){
@@ -85,20 +87,20 @@ public class Diet {
 
     private String isValidIntake(Intake intake){
         Integer actualCaories = getTotalCalories();
-        if(this.maxCalories < (actualCaories + intake.getFood().getCalories(intake.getGrams()))){
+        if(this.maxCalories != null && this.maxCalories < (actualCaories + intake.calculatedCalories())){
             return MAX_CALORIES_REBASE;
         }
         Integer actualCarbs = getTotalCarbs();
-        if(this.maxCarbs < (actualCarbs + (intake.getFood().getCarbos() * intake.grams / GRAMS_PER_PORTION))){
+        if(this.maxCarbs != null && this.maxCarbs < actualCarbs + intake.calculatedCarbos()){
             return MAX_CARBS_REBASE;
         }
         Integer actualFats = getTotalFats();
 
-        if(this.maxFats < (actualFats + (intake.getFood().getFats() * intake.grams / GRAMS_PER_PORTION))){
+        if(this.maxFats != null && this.maxFats < actualFats + intake.calculatedFats()){
             return MAX_FATS_REBASE;
         }
         Integer actualProteins = getTotalProteins();
-        if(this.maxProteins < (actualProteins + (intake.getFood().getProteins() * intake.grams / GRAMS_PER_PORTION))){
+        if(this.maxProteins != null && this.maxProteins < actualProteins + intake.calculatedProteins()){
             return MAX_PROTEINS_REBASE;
         }
         return OK;
@@ -107,7 +109,7 @@ public class Diet {
 	public Integer getTotalCalories(){
         Integer totalCalories = 0;
         for(Intake intake:intakes){
-            totalCalories = totalCalories+ intake.getFood().getCalories(intake.getGrams());
+            totalCalories = totalCalories+ intake.calculatedCalories();
         }
         return totalCalories;
     }
@@ -115,7 +117,7 @@ public class Diet {
 	public Integer getTotalCarbs(){
         Integer totalCarbs = 0;
         for(Intake intake:intakes){
-            totalCarbs = totalCarbs + intake.getFood().getCarbos()* intake.grams/GRAMS_PER_PORTION;
+            totalCarbs = totalCarbs + intake.calculatedCarbos();
         }
         return totalCarbs;
     }
@@ -123,7 +125,7 @@ public class Diet {
 	public Integer getTotalFats(){
         Integer totalFats = 0;
         for(Intake intake:intakes){
-            totalFats = totalFats + intake.getFood().getFats()* intake.grams/GRAMS_PER_PORTION;
+            totalFats = totalFats + intake.calculatedFats();
         }
         return totalFats;
     }
@@ -131,7 +133,7 @@ public class Diet {
 	public Integer getTotalProteins(){
         Integer totalProtein = 0;
         for(Intake intake: intakes){
-            totalProtein = totalProtein + intake.getFood().getProteins()*intake.grams/GRAMS_PER_PORTION;
+            totalProtein = totalProtein + intake.calculatedProteins();
         }
         return totalProtein;
     }
@@ -178,31 +180,5 @@ public class Diet {
 
     public void setIntakes(List<Intake> intakes) {
         this.intakes = intakes;
-    }
-
-    private class Intake{
-        private Food food;
-        private Integer grams;
-
-        public Intake(Food food, Integer grams) {
-            this.food = food;
-            this.grams = grams;
-        }
-
-        public Food getFood() {
-            return food;
-        }
-
-        public void setFood(Food food) {
-            this.food = food;
-        }
-
-        public Integer getGrams() {
-            return grams;
-        }
-
-        public void setGrams(Integer grams) {
-            this.grams = grams;
-        }
     }
 }
