@@ -16,6 +16,20 @@ public class Kb {
         return result;
     }
 
+    public static Integer sureNextInt(){
+        Integer resultado = null;
+        boolean notvalid=true;
+        do {
+            try {
+                resultado = nextInt();
+                notvalid=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Es necesario que sea un número");
+            }
+        }while(notvalid);
+        return resultado;
+    }
+
     public static String nextLine(){
         Scanner keyboard = new Scanner(System.in);
         String result = keyboard.nextLine();
