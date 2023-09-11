@@ -182,4 +182,18 @@ public class Diet {
     public void setIntakes(List<Intake> intakes) {
         this.intakes = intakes;
     }
+
+    public String getDietIntakes(){
+        String result = "";
+        boolean first=true;
+        for(Intake intake:intakes){
+            if(first){
+                first = false;
+                result = intake.getName()+":"+intake.getGrams();
+            }else{
+                result = result + ", "+intake.getName()+":"+intake.getGrams();
+            }
+        }
+        return result;
+    }
 }

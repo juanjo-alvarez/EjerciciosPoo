@@ -16,7 +16,7 @@ public class Kb {
         return result;
     }
 
-    public static Integer sureNextInt(){
+    public static Integer forceNextInt(){
         Integer resultado = null;
         boolean notvalid=true;
         do {

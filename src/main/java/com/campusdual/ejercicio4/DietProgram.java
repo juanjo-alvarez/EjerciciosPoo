@@ -25,7 +25,7 @@ public class DietProgram {
         Boolean notvalid = true;
         do{
             try {
-                option = Kb.sureNextInt();
+                option = Kb.forceNextInt();
                 notvalid = option<min || option>max;
             }catch (InputMismatchException e){
                 System.out.println("La opción debe ser un número");
@@ -90,20 +90,20 @@ public class DietProgram {
                 System.out.println("Nombre del alimento:");
                 String name = Kb.nextLine();
                 System.out.println("Carbohidratos:");
-                Integer carbs = Kb.sureNextInt();
+                Integer carbs = Kb.forceNextInt();
                 System.out.println("Grasas:");
-                Integer fats = Kb.sureNextInt();
+                Integer fats = Kb.forceNextInt();
                 System.out.println("Proteínas:");
-                Integer proteins = Kb.sureNextInt();
+                Integer proteins = Kb.forceNextInt();
                 System.out.println("Gramos:");
-                Integer grams = Kb.sureNextInt();
+                Integer grams = Kb.forceNextInt();
                 Food newFood = new Food(name,carbs,fats,proteins);
                 validateAndAddFoodToDiet(newFood,grams);
                 foodList.add(newFood);
                 break;
             case 2:
                 if(foodList.size()==0){
-                    System.out.println("Para agregar un alimento existente, tienem que existir alimentos previos");
+                    System.out.println("Para agregar un alimento existente, tienen que existir alimentos previos");
                     return;
                 }
                 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -122,7 +122,7 @@ public class DietProgram {
                 }
                 Food storedFood = foodList.get(element-1);
                 System.out.println("indique el número de gramos de "+storedFood.getName());
-                Integer foodGrams = Kb.sureNextInt();
+                Integer foodGrams = Kb.forceNextInt();
                 validateAndAddFoodToDiet(storedFood,foodGrams);
                 break;
         }
@@ -164,7 +164,7 @@ public class DietProgram {
                 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                 System.out.println("Escriba número de calorias");
                 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                Integer calories = Kb.sureNextInt();
+                Integer calories = Kb.forceNextInt();
                 this.diet = new Diet(calories);
                 System.out.println("Se ha creado una dieta con "+calories+" calorías máximas");
                 break;
@@ -173,11 +173,11 @@ public class DietProgram {
                 System.out.println("Escriba los macronutrientes");
                 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                 System.out.println("Carbohidratos:");
-                Integer carbs = Kb.sureNextInt();
+                Integer carbs = Kb.forceNextInt();
                 System.out.println("Grasas:");
-                Integer fats = Kb.sureNextInt();
+                Integer fats = Kb.forceNextInt();
                 System.out.println("Proteínas:");
-                Integer proteins = Kb.sureNextInt();
+                Integer proteins = Kb.forceNextInt();
                 this.diet = new Diet(fats,carbs,proteins);
                 System.out.println("Se ha creado una dieta con Carbohidratos:"+carbs+", Grasas:"+fats+" ,Proteínas:"+proteins);
                 break;
@@ -186,11 +186,11 @@ public class DietProgram {
                 System.out.println("Escriba los datos personales del paciente");
                 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                 System.out.println("Peso:");
-                Integer weight = Kb.sureNextInt();
+                Integer weight = Kb.forceNextInt();
                 System.out.println("Altura:");
-                Integer height = Kb.sureNextInt();
+                Integer height = Kb.forceNextInt();
                 System.out.println("Edad:");
-                Integer age = Kb.sureNextInt();
+                Integer age = Kb.forceNextInt();
                 System.out.println("Mujer u Hombre(m/h):");
                 String sexCharacter = Kb.nextLine();
                 this.diet = new Diet("m".equalsIgnoreCase(sexCharacter),age,height,weight);
@@ -215,6 +215,7 @@ public class DietProgram {
             System.out.println("Carbohidratos:"+this.diet.getTotalCarbs());
             System.out.println("Grasas:"+this.diet.getTotalFats());
             System.out.println("Proteínas:"+this.diet.getTotalProteins());
+            System.out.println("Alimentos de la dieta:"+this.diet.getDietIntakes());
         }else{
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("La dieta no esta iniciada");
