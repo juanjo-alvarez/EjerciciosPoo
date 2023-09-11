@@ -1,6 +1,5 @@
 package com.campusdual.ejercicio5;
 
-import com.campusdual.ejemplos.alimentos.Food;
 import com.campusdual.ejercicio5.exceptions.MaxCaloriesReachedException;
 import com.campusdual.ejercicio5.exceptions.MaxCarbsReachedException;
 import com.campusdual.ejercicio5.exceptions.MaxFatsReachedException;
