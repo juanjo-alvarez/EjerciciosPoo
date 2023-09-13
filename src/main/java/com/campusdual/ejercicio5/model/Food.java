@@ -1,4 +1,4 @@
-package com.campusdual.ejercicio5;
+package com.campusdual.ejercicio5.model;
 
 public class Food {
     private String name;
