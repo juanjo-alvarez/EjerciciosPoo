@@ -20,12 +20,12 @@ public class EjemploFicheros {
                 pw.println("linea "+i+":"+line);
                 i++;
             }
-            boolean borrado = readFile.delete();
-            if(borrado){
-                System.out.println("El fichero se ha borrado");
-            }
         }catch (Exception e){
             e.printStackTrace();
+        }
+        boolean borrado = readFile.delete();
+        if(borrado){
+            System.out.println("El fichero se ha borrado");
         }
     }
 }
